@@ -727,20 +727,6 @@ var overpass = new function() {
                               '" target="_blank">' +
                               v +
                               "</a>";
-                          // hyperlinks for wikidata entries
-                          var wikidata_page;
-                          if (
-                            (k == "wikidata" &&
-                              (wikidata_page = v.match(/^Q[0-9]+$/))) ||
-                            (k.match(/:wikidata$/) &&
-                              (wikidata_page = v.match(/^Q[0-9]+$/)))
-                          )
-                            v =
-                              '<a href="//www.wikidata.org/wiki/' +
-                              encodeURIComponent(wikidata_page[0]) +
-                              '" target="_blank">' +
-                              v +
-                              "</a>";
                           // hyperlinks for wikimedia-commons entries
                           var wikimediacommons_page;
                           if (
@@ -768,6 +754,18 @@ var overpass = new function() {
                             v =
                               '<a href="https://www.mapillary.com/app?focus=photo&pKey=' +
                               mapillary_page[0] +
+                              '" target="_blank">' +
+                              v +
+                              "</a>";
+                          // hyperlinks for World Database of Protected Areas
+                          var wdpa_page;
+                          if (
+                            (k == "ref:WDPA" &&
+                              (wdpa_page = v.match(/^[0-9]+$/)))
+                          )
+                            v =
+                              '<a href="//protectedplanet.net/' +
+                              encodeURIComponent(wdpa_page[0]) +
                               '" target="_blank">' +
                               v +
                               "</a>";
